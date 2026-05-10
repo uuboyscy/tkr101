@@ -6,5 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "pandas>=3.0.2",
+    "pandasql>=0.7.3",
     "pyarrow>=24.0.0",
+    "pymysql>=1.1.3",
 ]
