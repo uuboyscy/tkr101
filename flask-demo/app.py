@@ -1,9 +1,9 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
+def hello_test():
     return "Hello"
 
 @app.route("/<name>")
@@ -30,6 +30,18 @@ def get_empinfo(bu, emp_id):
         "emp_bu": "AAA",
         "update_date": "20250606",
     }
+
+# /hello?username=Allen&age=22
+@app.route("/hello")
+def hello():
+    username = request.args.get("username")
+    age = request.args.get("age")
+    if not username:
+        return "Who are you?"
+    if not age:
+        return f"Hello {username}. How old are you?"
+    return f"Hello {username}, you are {age} years old."
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5001)
