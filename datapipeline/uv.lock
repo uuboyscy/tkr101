@@ -103,6 +103,7 @@ dependencies = [
     { name = "pandasql" },
     { name = "pyarrow" },
     { name = "pymysql" },
+    { name = "sqlalchemy" },
 ]
 
 [package.metadata]
@@ -112,6 +113,7 @@ requires-dist = [
     { name = "pandasql", specifier = ">=0.7.3" },
     { name = "pyarrow", specifier = ">=24.0.0" },
     { name = "pymysql", specifier = ">=1.1.3" },
+    { name = "sqlalchemy", specifier = ">=2.0.49" },
 ]
 
 [[package]]
