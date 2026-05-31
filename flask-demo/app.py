@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -9,6 +9,13 @@ def hello_test():
 @app.route("/<name>")
 def greet(name):
     return f"Hello {name} !"
+
+@app.route("/templates/<name>")
+def greet_templates(name):
+    return render_template(
+        "greet.html",
+        name=name,
+    )
 
 # GET  /api/v1/get_empinfo/<bu>/<emp_id>
 @app.route("/api/v1/get_empinfo/<bu>/<emp_id>")
@@ -41,6 +48,17 @@ def hello():
     if not age:
         return f"Hello {username}. How old are you?"
     return f"Hello {username}, you are {age} years old."
+
+
+@app.route('/hello_post2', methods=['GET', 'POST'])
+def hello_post2():
+    if request.method == 'GET':
+        return render_template('hello_post.html')
+    elif request.method == 'POST':
+        username = request.form.get('username')
+        return render_template('hello_post.html',
+                               username=username,
+                               request_method='post')
 
 
 if __name__ == "__main__":
